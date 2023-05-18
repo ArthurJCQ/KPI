@@ -1,4 +1,6 @@
 {
+    "name": "arthurjcq/kpi",
+    "description": "KPI Project",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
