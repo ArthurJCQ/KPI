@@ -16,9 +16,17 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            - '../src/Domain/*/Entity/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Infrastructure\Persistence\Doctrine\Repository\SprintRepository:
+        calls:
+            - setRepository: [ App\Domain\Sprint\Entity\Sprint ]
+
+    App\Infrastructure\Persistence\Doctrine\Repository\UserRepository:
+        calls:
+            - setRepository: [ App\Domain\User\Entity\User ]
+
+    App\Infrastructure\Persistence\Doctrine\Repository\DevSprintConfigRepository:
+        calls:
+            - setRepository: [ App\Domain\DevSprintConfig\Entity\DevSprintConfig ]
